@@ -1,0 +1,20 @@
+.button-primary {
+  background-color: #3466AF;
+  cursor: pointer;
+  outline: 0;
+  color: #fff;
+  border-color: #3466AF;
+  display: inline-block;
+  /* font-weight: 400; */
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 8px 8px;
+  font-size: 14px;
+  border-radius: .4rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.button-primary:hover {
+    background-color: #21386E;
+    border-color: #21386E;
+  }

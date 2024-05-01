@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+@import './css/LandingPage.css';
+@import './css/components/button.css';
+@import './css/PokeDex.css';
