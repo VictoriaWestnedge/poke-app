@@ -6,7 +6,6 @@ import capitalizeName from "../components/capitalizeName";
 
 function PokeGrid() {
 
-  const [pokeData, setPokeData] = useState([]);
   const [pokeDetail, setPokeDetail] = useState([]);
   const [nextUrl, setNextUrl] = useState();
   const [previousUrl, setPreviousUrl] = useState();
@@ -16,7 +15,6 @@ function PokeGrid() {
   const [showFavorites, setShowFavorites] = useState(false);
   const [showPokeDex, setShowPokeDex] = useState(false);
   const [pokeDataById, setPokeDataById] = useState(null);
-	const [error, setError] = useState(null);
   const [form] = Form.useForm();
   const { Meta } = Card;
 
@@ -41,7 +39,6 @@ function PokeGrid() {
       else {
         const pokeUrlData = await fetch(url);
         const pokeUrlsJson = await pokeUrlData.json();
-        setPokeData(pokeUrlsJson);
         setNextUrl(pokeUrlsJson.next);
         setPreviousUrl(pokeUrlsJson.previous);
 
@@ -54,7 +51,6 @@ function PokeGrid() {
 
     } catch (error) {
       console.error(error);
-      setError(error)
     }
     finally {
       setIsLoading(false);
@@ -95,7 +91,7 @@ function PokeGrid() {
 
   const viewFavorites = () => {
     setShowFavorites(true);
-    if (favorites == undefined) {
+    if (favorites === undefined) {
       message.error('You do not have any favorites at the moment');
     }
   };
@@ -118,7 +114,7 @@ function PokeGrid() {
         <Card
           hoverable
           style={{ margin: 48, height: 420, width: 280}}
-          cover={<img src={poke.sprites.front_default} style= {{ width: "100%", background: "#8899A6" }} />}
+          cover={<img src={poke.sprites.front_default} alt='poke-img' style= {{ width: "100%", background: "#8899A6" }} />}
         >
           <Row>
             <Col lg={21}>
@@ -175,7 +171,7 @@ function PokeGrid() {
               size="large"
             >
               <Row justify="space-between" style={{ marginTop: '36px' }}>
-                <Col xxl={8} lg={9} xs={24}>
+                <Col xxl={8} lg={8} xs={24}>
                   <Form.Item name="query">
                     <Input placeholder='Search for a Pokemon'/>
                   </Form.Item>
@@ -204,11 +200,11 @@ function PokeGrid() {
             </Col>
           </Row>
           <Row>
-            {showFavorites ? favorites && favoritePokeList : pokeList}
-            {showPokeDex && pokeDataById && (
-              <Modal open={showPokeDex} onOk={handleOk} onCancel={handleCancel}>
-                <PokeDex pokeDataById={pokeDataById} />
-              </Modal>
+          {showFavorites ? favorites && favoritePokeList : pokeList}
+          {showPokeDex && pokeDataById && (
+            <Modal open={showPokeDex} onOk={handleOk} onCancel={handleCancel}>
+              <PokeDex pokeDataById={pokeDataById} />
+            </Modal>
           )}
           </Row>
           {previousUrl &&

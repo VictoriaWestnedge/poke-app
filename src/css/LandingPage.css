@@ -24,18 +24,6 @@ html {
   height: 100%;
 }
 
-/* body-landing {
-  align-items: center;
-  background: #252b32;
-  display: flex;
-  font-family: 'Rubik', sans-serif;
-  font-size: clamp(16px, 5vw, 32px);
-  justify-content: center;
-  margin: 0;
-  min-height: 100%;
-  padding: 1.5em;
-} */
-
 .button-landing {
   appearance: none;
   background: transparent;
